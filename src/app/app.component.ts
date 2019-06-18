@@ -1,10 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import {MatDialog} from '@angular/material';
+import {AgGridDialogComponent} from './ag-grid-dialog/ag-grid-dialog.component';
+
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'my-app',
+  templateUrl: "./app.component.html"
 })
 export class AppComponent {
-  title = 'test-ag-grid';
+  constructor(private dialog: MatDialog) {}
+
+  openDialog() {
+    this.dialog.open(AgGridDialogComponent, {
+      width: '1000px',
+      height: '1000px',
+    });
+  }
 }
+

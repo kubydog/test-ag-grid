@@ -1,0 +1,35 @@
+<!--<div style="width: 1200px; height: 1200px;">
+  <ag-grid-angular
+    *ngFor="let item of items" [shAttachMenu]="menu" [shMenuData]="item"
+    #agGrid
+    id="ag-grid"
+    class="ag-theme-balham"
+    style="height: 100%"
+    [columnDefs]="columnDefs"
+    [rowData]="rowData"
+    [enableColResize]="true"
+    (columnResized)="onColumnResized($event)"
+    (gridReady)="onGridReady($event)"
+  ></ag-grid-angular>
+</div>
+
+
+
+<sh-context-menu #menu>
+  <ng-template shContextMenuItem let-items (click)="onClick($event)">
+    <div>
+      {{items.label}}
+    </div>
+  </ng-template>
+</sh-context-menu>-->
+
+<mat-dialog-content class="mat-dialog-content full-width">
+  <ag-grid-angular
+    id="ag-grid"
+    class="ag-theme-balham"
+    style="height: 1000px"
+    [columnDefs]="columnDefs"
+    [rowData]="rowData"
+    (gridReady)="onGridReady($event)"
+  ></ag-grid-angular>
+</mat-dialog-content>
