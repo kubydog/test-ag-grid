@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
+import {MatDialog} from '@angular/material';
+import {NestDialogComponent} from '../nest-dialog/nest-dialog.component';
+import {TextChangeService} from '../text-change.service';
 
 @Component({
   selector: 'app-ag-grid-dialog',
@@ -14,11 +18,12 @@ export class AgGridDialogComponent implements OnInit {
   private defaultColDef;
   private rowData: [];
   private items: any[];
+  private text;
 
   ngOnInit(): void {
   }
 
-  constructor() {
+  constructor(private dialog: MatDialog, private textChangeService: TextChangeService) {
     this.columnDefs = [
       {
         field: "name",
@@ -52,6 +57,10 @@ export class AgGridDialogComponent implements OnInit {
         label: 'Right Click Menu'
       }
     ];
+
+    this.textChangeService.text$.subscribe(value => {
+      this.text = value;
+    });
   }
 
   onColumnResized(event) {
@@ -74,7 +83,20 @@ export class AgGridDialogComponent implements OnInit {
     this.gridApi.setColumnDefs(this.columnDefs);
   }
 
-  onClick(params: any) {}
+  openDialog() {
+    this.dialog.open(NestDialogComponent, {
+      width: '800px',
+      height: '400px',
+    });
+  }
+
+  isSelected() {
+    let checked = false;
+    this.textChangeService.checked$.subscribe(value => {
+      checked = value;
+    });
+    return checked;
+  }
 }
 
 function createRowData() {

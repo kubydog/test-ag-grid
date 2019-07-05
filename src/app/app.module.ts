@@ -9,12 +9,20 @@ import { AgGridModule } from "ag-grid-angular";
 import { AppComponent } from "./app.component";
 import {ShContextMenuModule} from 'ng2-right-click-menu';
 import { AgGridDialogComponent } from './ag-grid-dialog/ag-grid-dialog.component';
-import {MatDialogModule} from '@angular/material';
+import {MatCheckboxModule, MatDialogModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatTreeComponent } from './mat-tree/mat-tree.component';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatButtonModule} from '@angular/material/button';
+import { NestDialogComponent } from './nest-dialog/nest-dialog.component';
+import { CheckboxCellComponent } from './checkbox-cell/checkbox-cell.component';
 
 @NgModule({
   entryComponents: [
-    AgGridDialogComponent
+    AgGridDialogComponent,
+    NestDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -23,9 +31,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     AgGridModule.withComponents([]),
     ShContextMenuModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTreeModule,
+    MatIconModule,
+    MatButtonToggleModule,
+    MatButtonModule,
+    MatCheckboxModule
   ],
-  declarations: [AppComponent, AgGridDialogComponent],
+  declarations: [AppComponent, AgGridDialogComponent, MatTreeComponent, NestDialogComponent, CheckboxCellComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

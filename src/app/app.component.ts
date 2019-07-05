@@ -13,7 +13,7 @@ export class AppComponent {
   openDialog() {
     this.dialog.open(AgGridDialogComponent, {
       width: '1000px',
-      height: '1000px',
+      height: '800px',
     });
   }
 }

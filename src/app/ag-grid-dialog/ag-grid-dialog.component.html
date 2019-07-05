@@ -33,3 +33,6 @@
     (gridReady)="onGridReady($event)"
   ></ag-grid-angular>
 </mat-dialog-content>
+
+<mat-checkbox [checked]="isSelected()"></mat-checkbox>
+<button (click)="openDialog()">Open Dialog</button>
